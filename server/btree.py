@@ -1,6 +1,6 @@
 class btreeNode:
-    def __init__(self,t, leaf = False):
-        self.t = t
+    def __init__(self, order, leaf = False):
+        self.order = order
         self.leaf = leaf
         self.keys = []
         self.children = []
@@ -10,11 +10,25 @@ class btreeNode:
         # 
 
 class BTree:    
-    def __init__(self, t):
-        self.root = btreeNode(t, True)
-        self.t=t
+    def __init__(self, order):
+        self.root = btreeNode(order, True)
+        self.order = order
+
+    def insert(self, key):
+        root = self.root
+
+        if len(root.keys) < self.order:
+            self._insert_non_full(root, key)
+        else:
+            self.insert_full(root, key)
         
-    def insert(self, key, value):
+
+
+    def _insert_non_full(self, node, key):
+        i = len(node.keys) - 1
+        
+    def insert_full(self, node, key):
+        i = len(node.keys) - 1
 
 
         pass
